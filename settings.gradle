@@ -1,0 +1,3 @@
+rootProject.name = 'kata-songs-api'
+
+include ':kata-songs-api-src'

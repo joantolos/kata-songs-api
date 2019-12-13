@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url "http://repo.spring.io/release"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}")
+    }
+}
+
+plugins {
+    id 'jacoco'
+    id 'groovy'
+}
+
+allprojects  {
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+
+    jacoco {
+        toolVersion = '0.8.5'
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        jcenter()
+    }
+}
+
+task rootReport(type: JacocoReport, group: 'Coverage reports') {
+    description = 'Generates an aggregate report from all subprojects'
+    dependsOn(subprojects.test)
+
+    additionalSourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs)
+    sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
+    classDirectories = files(subprojects.sourceSets.main.output)
+    executionData = files(subprojects.jacocoTestReport.executionData)
+
+    reports {
+        html.enabled = true
+        xml.enabled = true
+    }
+
+    doFirst {
+        executionData = files(executionData.findAll { it.exists() })
+    }
+
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['**/com/joantolos/kata/songs/api/SongsAPI**'])
+        })
+    }
+}
+
+//project('kata-songs-api-test:kata-songs-api-integration') {
+//    test {
+//        onlyIf {
+//            System.getProperty('testExec') != null && System.getProperty('serviceEnv') != null
+//        }
+//    }
+//}
+//
+//project('kata-songs-api-test:kata-songs-api-performance') {
+//    test {
+//        onlyIf {
+//            false
+//        }
+//    }
+//}
+
+build.finalizedBy(rootReport)
