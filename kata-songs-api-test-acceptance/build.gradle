@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+bootJar {
+    mainClassName = 'behaviour.SongsAPIAcceptanceTest'
+}
+
+dependencies {
+
+    testCompile (
+            'info.cukes:cucumber-java8:1.2.5',
+            'info.cukes:cucumber-spring:1.2.5',
+            'info.cukes:cucumber-junit:1.2.5',
+            'junit:junit:4.12',
+            'org.skyscreamer:jsonassert:1.2.3',
+            'com.jayway.restassured:json-path:2.9.0',
+            'io.rest-assured:rest-assured:3.0.3',
+    )
+
+    testCompile("org.springframework.boot:spring-boot-starter-test:${spring_boot_version}")
+    testCompile('com.h2database:h2:1.4.200')
+
+    compile (
+            'commons-configuration:commons-configuration:1.6',
+            'commons-io:commons-io:2.5'
+    )
+
+    compile project(":kata-songs-api-src")
+
+}

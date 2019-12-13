@@ -57,7 +57,7 @@ task rootReport(type: JacocoReport, group: 'Coverage reports') {
     }
 }
 
-//project('kata-songs-api-test:kata-songs-api-integration') {
+//project('kata-songs-api-test-integration') {
 //    test {
 //        onlyIf {
 //            System.getProperty('testExec') != null && System.getProperty('serviceEnv') != null
@@ -65,7 +65,7 @@ task rootReport(type: JacocoReport, group: 'Coverage reports') {
 //    }
 //}
 //
-//project('kata-songs-api-test:kata-songs-api-performance') {
+//project('kata-songs-api-test-performance') {
 //    test {
 //        onlyIf {
 //            false

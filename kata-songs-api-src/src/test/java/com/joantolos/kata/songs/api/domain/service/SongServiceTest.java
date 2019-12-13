@@ -22,7 +22,7 @@ public class SongServiceTest {
     @Test
     public void shouldGetSong() throws SQLException {
         Song expectedSong = new Song("Yellow", "Coldplay", "Parachutes", "2000");
-        Song actualSong = songService.getSong("Yellow", "Coldplay").get(0);
+        Song actualSong = songService.getSong("Yellow", "Coldplay").getSongs().get(0);
         Assert.assertEquals(expectedSong.getAlbum(), actualSong.getAlbum());
     }
 }
