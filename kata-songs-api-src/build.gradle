@@ -1,8 +1,8 @@
 apply plugin: 'org.springframework.boot'
 
 bootJar {
-    mainClassName = 'com.joantolos.kata.songs.api.app.SongsAPI'
-    baseName = 'kata-crud'
+    mainClassName = 'com.joantolos.kata.songs.api.SongsAPI'
+    baseName = 'kata-songs-api'
     version =  '1.0.0'
 }
 
