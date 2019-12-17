@@ -11,7 +11,7 @@ afterEvaluate{
         enabled = true
         manifest {
             attributes (
-                    'Main-Class' : 'com.joantolos.kata.songs.api.app.SongsAPI',
+                    'Main-Class' : 'com.joantolos.kata.songs.api.SongsAPI',
                     'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' ')
             )
         }
