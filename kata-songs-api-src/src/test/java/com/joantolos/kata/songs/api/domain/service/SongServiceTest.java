@@ -25,4 +25,10 @@ public class SongServiceTest {
         Song actualSong = songService.getSong("Yellow", "Coldplay").getSongs().get(0);
         Assert.assertEquals(expectedSong.getAlbum(), actualSong.getAlbum());
     }
+
+    @Test
+    public void shouldGetLyrics() throws SQLException {
+        Song yellow = songService.getAllSongsLyrics().getSongs().stream().filter(song -> song.getName().equals("Yellow")).findAny().get();
+        Assert.assertTrue(yellow.getLyrics().startsWith("Look at the stars"));
+    }
 }

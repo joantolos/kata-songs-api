@@ -3,6 +3,7 @@ package com.joantolos.kata.songs.api.domain.service;
 import com.joantolos.kata.songs.api.domain.dao.SongDAO;
 import com.joantolos.kata.songs.api.domain.entity.RetrieveOutput;
 import com.joantolos.kata.songs.api.domain.entity.Song;
+import com.joantolos.kata.songs.api.domain.remote.LyricsAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,9 @@ public class SongService {
 
     @Autowired
     private SongDAO songDAO;
+
+    @Autowired
+    private LyricsAPI lyricsAPI;
 
     public RetrieveOutput getSong(String name, String artist) throws SQLException {
         return new RetrieveOutput(songDAO.retrieveSong(name, artist));
@@ -29,6 +33,7 @@ public class SongService {
 
     public RetrieveOutput getAllSongsLyrics() throws SQLException {
         List<Song> allSongs = songDAO.retrieveSong("", "");
+        allSongs.forEach(song -> song.setLyrics(this.lyricsAPI.getLyric(song.getName(), song.getArtist())));
         return new RetrieveOutput(allSongs);
     }
 
