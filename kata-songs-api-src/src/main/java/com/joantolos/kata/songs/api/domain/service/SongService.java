@@ -19,8 +19,8 @@ public class SongService {
         return new RetrieveOutput(songDAO.retrieveSong(name, artist));
     }
 
-    public void updateSong(String album, String year) {
-
+    public boolean updateSong(Song inputSong) throws SQLException {
+        return songDAO.updateSong(inputSong.getName(), inputSong.getArtist(), inputSong.getAlbum(), inputSong.getYear());
     }
 
     public RetrieveOutput getAllSongs() throws SQLException {

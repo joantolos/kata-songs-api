@@ -15,3 +15,9 @@ Feature: Song
     Given I use body from file "payloads/respect.json"
     When I perform a "POST" to "http://localhost:7111/song" end point
     Then the response status is 201
+
+  @PUT.Song
+  Scenario: Update a song
+    Given I use body from file "payloads/respectGreatestHits.json"
+    When I perform a "PUT" to "http://localhost:7111/song" end point
+    Then the response status is 204

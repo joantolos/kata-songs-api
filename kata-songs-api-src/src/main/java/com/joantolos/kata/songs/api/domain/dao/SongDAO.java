@@ -49,6 +49,10 @@ public class SongDAO {
         return this.executeStatement("INSERT INTO songs (name, artist, album, release_year) VALUES ('" + name + "', '" + artist + "', '" + album + "', '" + year + "')");
     }
 
+    public boolean updateSong(String name, String artist, String album, String year) throws SQLException {
+        return this.executeStatement("UPDATE songs s SET s.album = '" + album + "', s.release_year = '" + year + "' WHERE s.name = '" + name + "' AND s.artist = '" + artist + "'");
+    }
+
     public List<Song> retrieveSong(String name, String artist) throws SQLException {
         String retrieveQuery = "SELECT s.name, s.artist, s.album, s.release_year FROM songs s";
         if (!name.isEmpty() || !artist.isEmpty()) {
@@ -74,5 +78,4 @@ public class SongDAO {
 
         return songs;
     }
-
 }

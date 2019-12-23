@@ -27,9 +27,9 @@ public class SongsController {
     }
 
     @RequestMapping(value = "/song", method = RequestMethod.PUT)
-    public ResponseEntity updateSong(@RequestParam("album") String album, @RequestParam("year") String year) throws SQLException {
+    public ResponseEntity putSong(@RequestBody Song songInput) throws SQLException {
         log.info("### PUT /songs endpoint called");
-        this.songService.updateSong(album, year);
+        this.songService.updateSong(songInput);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
