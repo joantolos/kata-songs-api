@@ -46,12 +46,18 @@ public class SongDAO {
     }
 
     public List<Song> retrieveSong(String name, String artist) throws SQLException {
-        String getQuery = "SELECT s.name, s.artist, s.album, s.release_year FROM songs s WHERE s.name = '" + name + "'" + " AND s.artist = '" + artist + "'";
+        String retrieveQuery = "SELECT s.name, s.artist, s.album, s.release_year FROM songs s";
+        if (!name.isEmpty() || !artist.isEmpty()) {
+            return this.retrieveSong(retrieveQuery +" WHERE s.name = '" + name + "'" + " AND s.artist = '" + artist + "'");
+        }
+        return this.retrieveSong(retrieveQuery);
+    }
 
+    private List<Song> retrieveSong(String query) throws SQLException {
         List<Song> songs = new ArrayList<>();
 
         try (Statement statement = connection.createStatement()) {
-            ResultSet rs = statement.executeQuery(getQuery);
+            ResultSet rs = statement.executeQuery(query);
 
             while (rs.next()) {
                 songs.add(new Song(

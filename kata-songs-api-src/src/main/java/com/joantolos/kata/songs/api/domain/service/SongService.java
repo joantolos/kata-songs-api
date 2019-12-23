@@ -25,4 +25,8 @@ public class SongService {
     public void putSong(Song songInput) {
 
     }
+
+    public RetrieveOutput getAllSongs() throws SQLException {
+        return new RetrieveOutput(songDAO.retrieveSong("", ""));
+    }
 }
