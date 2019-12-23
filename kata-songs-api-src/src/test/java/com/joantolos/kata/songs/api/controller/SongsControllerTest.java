@@ -31,20 +31,9 @@ public class SongsControllerTest {
         this.mockMvc
                 .perform(post("/song")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{ \"name\": \"Yellow\", \"artist\": \"Coldplay\" }"))
+                        .content("{ \"name\": \"Respect\", \"artist\": \"Aretha Franklin\", \"album\": \"I Never Loved a Man\", \"year\": \"1967\" }"))
                 .andDo(print())
                 .andExpect(status().isCreated());
-    }
-
-    @Test
-    public void shouldPutSong() throws Exception {
-
-        this.mockMvc
-                .perform(put("/song?name=Yellow&artist=Coldplay")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{ \"name\": \"Yellow\", \"artist\": \"Coldplay\" }"))
-                .andDo(print())
-                .andExpect(status().isNoContent());
     }
 
     @Test

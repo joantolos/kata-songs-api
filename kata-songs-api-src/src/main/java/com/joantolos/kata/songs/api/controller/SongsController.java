@@ -22,14 +22,14 @@ public class SongsController {
     @RequestMapping(value = "/song", method = RequestMethod.POST)
     public ResponseEntity postSong(@RequestBody Song songInput) throws SQLException {
         log.info("### POST /songs endpoint called");
-        this.songService.postSong(songInput);
+        this.songService.addSong(songInput);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @RequestMapping(value = "/song", method = RequestMethod.PUT)
-    public ResponseEntity putSong(@RequestBody Song songInput) throws SQLException {
+    public ResponseEntity updateSong(@RequestParam("album") String album, @RequestParam("year") String year) throws SQLException {
         log.info("### PUT /songs endpoint called");
-        this.songService.putSong(songInput);
+        this.songService.updateSong(album, year);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

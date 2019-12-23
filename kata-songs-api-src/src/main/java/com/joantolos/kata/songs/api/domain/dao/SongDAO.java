@@ -38,11 +38,15 @@ public class SongDAO {
         this.executeStatement(createDatabase);
     }
 
-    private void executeStatement(String statementSQL) throws SQLException {
+    private boolean executeStatement(String statementSQL) throws SQLException {
         log.info(statementSQL);
         try (Statement statement = connection.createStatement()) {
-            statement.execute(statementSQL);
+            return statement.execute(statementSQL);
         }
+    }
+
+    public boolean addSong(String name, String artist, String album, String year) throws SQLException {
+        return this.executeStatement("INSERT INTO songs (name, artist, album, release_year) VALUES ('" + name + "', '" + artist + "', '" + album + "', '" + year + "')");
     }
 
     public List<Song> retrieveSong(String name, String artist) throws SQLException {

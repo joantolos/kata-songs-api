@@ -19,11 +19,7 @@ public class SongService {
         return new RetrieveOutput(songDAO.retrieveSong(name, artist));
     }
 
-    public void postSong(Song songInput) {
-
-    }
-
-    public void putSong(Song songInput) {
+    public void updateSong(String album, String year) {
 
     }
 
@@ -34,5 +30,9 @@ public class SongService {
     public RetrieveOutput getAllSongsLyrics() throws SQLException {
         List<Song> allSongs = songDAO.retrieveSong("", "");
         return new RetrieveOutput(allSongs);
+    }
+
+    public boolean addSong(Song inputSong) throws SQLException {
+        return songDAO.addSong(inputSong.getName(), inputSong.getArtist(), inputSong.getAlbum(), inputSong.getYear());
     }
 }
