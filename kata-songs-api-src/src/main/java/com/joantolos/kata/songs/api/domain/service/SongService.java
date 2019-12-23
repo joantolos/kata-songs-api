@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Component
 public class SongService {
@@ -28,5 +29,10 @@ public class SongService {
 
     public RetrieveOutput getAllSongs() throws SQLException {
         return new RetrieveOutput(songDAO.retrieveSong("", ""));
+    }
+
+    public RetrieveOutput getAllSongsLyrics() throws SQLException {
+        List<Song> allSongs = songDAO.retrieveSong("", "");
+        return new RetrieveOutput(allSongs);
     }
 }

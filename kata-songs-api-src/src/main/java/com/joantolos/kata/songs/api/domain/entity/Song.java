@@ -6,6 +6,7 @@ public class Song {
     private String artist;
     private String album;
     private String year;
+    private String lyrics;
 
     public Song() {
     }
@@ -31,5 +32,13 @@ public class Song {
 
     public String getYear() {
         return year;
+    }
+
+    public String getLyrics() {
+        return lyrics;
+    }
+
+    public void setLyrics(String lyrics) {
+        this.lyrics = lyrics;
     }
 }

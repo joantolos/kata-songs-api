@@ -44,4 +44,10 @@ public class SongsController {
         log.info("### GET /song/all endpoint called");
         return ResponseEntity.status(HttpStatus.OK).body(this.songService.getAllSongs());
     }
+
+    @RequestMapping(value = "/song/lyrics", method = RequestMethod.GET)
+    public ResponseEntity getAllSongsLyrics() throws SQLException {
+        log.info("### GET /song/lyrics endpoint called");
+        return ResponseEntity.status(HttpStatus.OK).body(this.songService.getAllSongsLyrics());
+    }
 }
