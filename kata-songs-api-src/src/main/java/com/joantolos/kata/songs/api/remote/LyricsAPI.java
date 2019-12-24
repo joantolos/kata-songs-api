@@ -1,8 +1,9 @@
-package com.joantolos.kata.songs.api.domain.remote;
+package com.joantolos.kata.songs.api.remote;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.joantolos.kata.songs.api.domain.entity.LyricsOutput;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -13,7 +14,7 @@ import java.net.URISyntaxException;
 @Component
 public class LyricsAPI {
 
-    private String url = "https://api.lyrics.ovh/v1/";
+    @Value("${api.lyrics.url}") private String url;
 
     public String getLyric(String name, String artist) {
         try {

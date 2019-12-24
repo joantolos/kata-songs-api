@@ -26,6 +26,7 @@ dependencies {
         exclude group: 'javax.servlet', module: 'servlet-api'
         exclude group: 'com.google.code.gson', module: 'gson'
     }
+    compile('org.mock-server:mockserver-netty:5.5.1')
     compile('io.springfox:springfox-swagger2:2.9.2')
     compile('io.springfox:springfox-swagger-ui:2.9.2')
     compile('postgresql:postgresql:9.1-901-1.jdbc4')

@@ -3,7 +3,7 @@ package com.joantolos.kata.songs.api.domain.service;
 import com.joantolos.kata.songs.api.domain.dao.SongDAO;
 import com.joantolos.kata.songs.api.domain.entity.RetrieveOutput;
 import com.joantolos.kata.songs.api.domain.entity.Song;
-import com.joantolos.kata.songs.api.domain.remote.LyricsAPI;
+import com.joantolos.kata.songs.api.remote.LyricsAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

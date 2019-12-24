@@ -45,13 +45,4 @@ public class SongsControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @Test
-    public void shouldGetSongLyrics() throws Exception {
-
-        this.mockMvc
-                .perform(get("/song/lyrics"))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
 }

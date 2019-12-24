@@ -21,3 +21,11 @@ Feature: Song
     Given I use body from file "payloads/respectGreatestHits.json"
     When I perform a "PUT" to "http://localhost:7111/song" end point
     Then the response status is 204
+
+  @Retrieve.Lyrics
+  Scenario: Retrieve Lyrics for all songs
+    When I perform a "GET" to "http://localhost:7111/song/lyrics" end point
+    Then the response status is 200
+    And the response at the json path "songs[0].artist" includes "Coldplay"
+    And the response at the json path "songs[0].album" includes "Parachutes"
+    And the response at the json path "songs[0].lyrics" includes "Fake lyrics for Yellow"

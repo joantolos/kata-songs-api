@@ -1,6 +1,11 @@
+import com.joantolos.kata.songs.api.remote.mocks.LyricsAPIMock;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+
+import java.io.FileNotFoundException;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -12,4 +17,20 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features"
 )
 public class SongsAPIAcceptanceTestRunner {
+
+        private static LyricsAPIMock lyricsAPIMock;
+
+        @BeforeClass
+        public static void setup() throws FileNotFoundException {
+                try {
+                        lyricsAPIMock = new LyricsAPIMock(7201);
+                } catch (Exception e) {
+                        throw new FileNotFoundException(e.getMessage());
+                }
+        }
+
+        @AfterClass
+        public static void teardown() {
+                lyricsAPIMock.stop();
+        }
 }
