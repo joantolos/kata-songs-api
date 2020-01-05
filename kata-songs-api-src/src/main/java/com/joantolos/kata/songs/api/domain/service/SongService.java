@@ -33,8 +33,8 @@ public class SongService {
 
     public RetrieveOutput getAllSongs() throws SQLException {
         List<Song> allSongs = songDAO.retrieveSong("", "");
-        List<Song> allRemoteSongs = countryAPI.getAllSongs();
-        allSongs.addAll(allRemoteSongs);
+//        List<Song> allRemoteSongs = countryAPI.getAllSongs();
+//        allSongs.addAll(allRemoteSongs);
         return new RetrieveOutput(allSongs);
     }
 

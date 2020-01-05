@@ -24,9 +24,8 @@ public class LyricsAPI {
             ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
 
             return new ObjectMapper().readValue(result.getBody(), LyricsOutput.class).getLyrics();
-        } catch (URISyntaxException | JsonProcessingException e) {
-            e.printStackTrace();
+        } catch (URISyntaxException | JsonProcessingException | NullPointerException e) {
+            return "No lyrics available for this song.";
         }
-        return "";
     }
 }
