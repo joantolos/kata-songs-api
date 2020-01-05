@@ -31,10 +31,12 @@ public class SongService {
         return songDAO.updateSong(inputSong.getName(), inputSong.getArtist(), inputSong.getAlbum(), inputSong.getYear());
     }
 
-    public RetrieveOutput getAllSongs() throws SQLException {
+    public RetrieveOutput getAllSongs(boolean includeRemote) throws SQLException {
         List<Song> allSongs = songDAO.retrieveSong("", "");
-//        List<Song> allRemoteSongs = countryAPI.getAllSongs();
-//        allSongs.addAll(allRemoteSongs);
+        if(includeRemote) {
+            List<Song> allRemoteSongs = countryAPI.getAllSongs();
+            allSongs.addAll(allRemoteSongs);
+        }
         return new RetrieveOutput(allSongs);
     }
 

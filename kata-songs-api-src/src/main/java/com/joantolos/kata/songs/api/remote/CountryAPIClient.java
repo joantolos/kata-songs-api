@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient("songs-api")
+@FeignClient("country-songs-api")
 public interface CountryAPIClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/song/all")
