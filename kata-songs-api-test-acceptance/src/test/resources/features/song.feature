@@ -7,7 +7,8 @@ Feature: Song
 
   @Retrieve.All.Songs
   Scenario: Retrieving all songs
-    Given I perform a "GET" to "http://localhost:7111/song/all" end point
+    Given I set the header "include-remote" to "false"
+    And I perform a "GET" to "http://localhost:7111/song/all" end point
     Then the response at the json path "songs[0].album" includes "Parachutes"
 
   @POST.Song

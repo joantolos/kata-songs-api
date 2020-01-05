@@ -40,9 +40,9 @@ public class SongsController {
     }
 
     @RequestMapping(value = "/song/all", method = RequestMethod.GET)
-    public ResponseEntity getAllSongs() throws SQLException {
+    public ResponseEntity getAllSongs(@RequestHeader("include-remote") Boolean includeRemote) throws SQLException {
         log.info("### GET /song/all endpoint called");
-        return ResponseEntity.status(HttpStatus.OK).body(this.songService.getAllSongs(false));
+        return ResponseEntity.status(HttpStatus.OK).body(this.songService.getAllSongs(includeRemote));
     }
 
     @RequestMapping(value = "/song/lyrics", method = RequestMethod.GET)

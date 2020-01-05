@@ -51,6 +51,9 @@ public class SongsAPIAcceptance implements En {
                 Assert.fail(e.getMessage());
             }
         });
+        Given("^I set the header \"([^\"]*)\" to \"([^\"]*)\"$", (String headerName, String headerValue) -> {
+            request.header(headerName, headerValue);
+        });
     }
 
 }
