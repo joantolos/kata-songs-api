@@ -6,6 +6,9 @@ public class RetrieveOutput {
 
     public List<Song> songs;
 
+    public RetrieveOutput() {
+    }
+
     public RetrieveOutput(List<Song> songs) {
         this.songs = songs;
     }

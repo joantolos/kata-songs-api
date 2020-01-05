@@ -1,3 +1,4 @@
+import com.joantolos.kata.songs.api.remote.mocks.CountryAPIMock;
 import com.joantolos.kata.songs.api.remote.mocks.LyricsAPIMock;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -19,11 +20,13 @@ import java.io.FileNotFoundException;
 public class SongsAPIAcceptanceTestRunner {
 
         private static LyricsAPIMock lyricsAPIMock;
+        private static CountryAPIMock countryAPIMock;
 
         @BeforeClass
         public static void setup() throws FileNotFoundException {
                 try {
                         lyricsAPIMock = new LyricsAPIMock(7201);
+                        countryAPIMock = new CountryAPIMock(7202);
                 } catch (Exception e) {
                         throw new FileNotFoundException(e.getMessage());
                 }
@@ -32,5 +35,6 @@ public class SongsAPIAcceptanceTestRunner {
         @AfterClass
         public static void teardown() {
                 lyricsAPIMock.stop();
+                countryAPIMock.stop();
         }
 }

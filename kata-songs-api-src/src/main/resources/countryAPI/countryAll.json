@@ -1,0 +1,18 @@
+{
+  "songs": [
+    {
+      "name": "Jolene",
+      "artist": "Dolly Parton",
+      "album": "Jolene",
+      "year": "1974",
+      "lyrics": null
+    },
+    {
+      "name": "Mama Tried",
+      "artist": "Merle Haggard",
+      "album": "Killers Three",
+      "year": "1968",
+      "lyrics": null
+    }
+  ]
+}

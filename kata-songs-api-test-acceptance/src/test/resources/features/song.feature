@@ -30,3 +30,9 @@ Feature: Song
     And the response at the json path "songs[0].artist" includes "Coldplay"
     And the response at the json path "songs[0].album" includes "Parachutes"
     And the response at the json path "songs[0].lyrics" includes "Fake lyrics for Yellow"
+
+  @Retrieve.All.Songs.Remote
+  Scenario: Retrieving all songs including the remote ones
+    Given I set the header "include-remote" to "true"
+    And I perform a "GET" to "http://localhost:7111/song/all" end point
+    Then the response at the json path "songs[4].album" includes "Jolene"

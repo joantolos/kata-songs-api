@@ -34,7 +34,7 @@ public class SongService {
     public RetrieveOutput getAllSongs(boolean includeRemote) throws SQLException {
         List<Song> allSongs = songDAO.retrieveSong("", "");
         if(includeRemote) {
-            List<Song> allRemoteSongs = countryAPI.getAllSongs();
+            List<Song> allRemoteSongs = countryAPI.getAllSongs().getSongs();
             allSongs.addAll(allRemoteSongs);
         }
         return new RetrieveOutput(allSongs);
